@@ -4,6 +4,8 @@ using UnityEngine;
 using System.Threading;
 public class Move_Char : MonoBehaviour
 {
+    static public Move_Char instance;
+
     public string current_MapName;
     BoxCollider2D boxCollider2D;
     public LayerMask layerMask;
@@ -18,9 +20,17 @@ public class Move_Char : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
-        boxCollider2D = GetComponent<BoxCollider2D>();
-        animator = GetComponent<Animator>();
+        if (instance == null)
+        {
+            DontDestroyOnLoad(this.gameObject);
+            boxCollider2D = GetComponent<BoxCollider2D>();
+            animator = GetComponent<Animator>();
+            instance= this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
     IEnumerator Move_Action()
     {
