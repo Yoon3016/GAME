@@ -16,7 +16,6 @@ public class Move_Char : MonoBehaviour
     private float apply_run_speed=1;
     [SerializeField] private int WalkCount=10;
     private Animator animator;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +30,7 @@ public class Move_Char : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
     }
     IEnumerator Move_Action()
     {
